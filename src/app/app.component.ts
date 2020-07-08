@@ -24,7 +24,6 @@ export class AppComponent {
      let val = evt.target.value.toString();
      if (val === '+' || val === '-' || val === '*' || val === '/') 
      {
-        alert(this.displayValue.length);
         let lastVal = this.displayValue[this.displayValue.length - 1];
         if (lastVal === '+' || lastVal === '-' || lastVal === '*' || lastVal === '/')  
         {
@@ -32,7 +31,6 @@ export class AppComponent {
         }
         if ((this.operatorSet) || (this.displayValue === '')) 
         {
-          alert("set");
           return;
         }
         this.value1 = parseFloat(this.displayValue);   
