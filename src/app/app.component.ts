@@ -1,29 +1,76 @@
 import { Component } from '@angular/core';
-
-// selector: the property that reprsent the "CUSTOM-HTML-TAG", using
-// whihc the component will be referred in html markup of index.html
-// ot HTML Template of other component like User/Custom control
-// templateUrl:(external HTML file) the HTML that will be rendered in browser when the
-// the component is bootstrap
-// template: Inline HTML
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-   name: string;
-   header: string;
-   url: string;
+   value1: number;
+   //value2: number;
+   //header: string;
+   //lastValue:string;
+   operator: string;
+   displayValue: string;
+   calculatedValue : string;
+   operatorSet : boolean;
    constructor(){
-      this.name = 'Mahesh';
-      this.header = 'The Component with Binding DEMOS';
-      this.url = "https://www.webnethelper.com";
+      this.displayValue = "";
+      this.calculatedValue = "";
+      //this.lastValue = "";
    }
 
-   display(evt): void {
-     // return the value attribute of the element
-     // on which the event binding has done
-     alert(evt.target.value);
-     this.header = 'The Click Event';
+   display(evt): void 
+   {  
+     this.calculatedValue = "";
+     let val = evt.target.value.toString();
+     if (val === '+' || val === '-' || val === '*' || val === '/') 
+     {
+        alert(this.displayValue.length);
+        let lastVal = this.displayValue[this.displayValue.length - 1];
+        if (lastVal === '+' || lastVal === '-' || lastVal === '*' || lastVal === '/')  
+        {
+          this.operatorSet = true;
+        }
+        if ((this.operatorSet) || (this.displayValue === '')) 
+        {
+          alert("set");
+          return;
+        }
+        this.value1 = parseFloat(this.displayValue);   
+        //alert(this.value1);  
+        this.operator = val;       
+        this.operatorSet = true;
+     }     
+     this.displayValue = this.displayValue + val;       
    }
+   
+  allClear() : void {
+    this.value1 = 0;
+    this.displayValue = "";
+    this.calculatedValue = "";
+    this.operator="";
+    this.operatorSet = false;
+  }
+
+   calculation() : void {
+    let value2 = parseFloat(this.displayValue.split(this.operator)[1]);
+    if(this.operator === '+')
+    {
+      this.calculatedValue = (this.value1 + value2).toString();
+    }
+    if(this.operator === '-')
+    {
+      this.calculatedValue = (this.value1 - value2).toString();
+    }
+    if(this.operator === '*')
+    {
+      this.calculatedValue = (this.value1 * value2).toString();
+    }
+    if(this.operator === '/')
+    {
+      this.calculatedValue = (this.value1 / value2).toString();
+    }
+
+    this.displayValue = this.calculatedValue.toString();
+    this.operatorSet = false;
+  }
 }

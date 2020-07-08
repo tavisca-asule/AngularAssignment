@@ -1,17 +1,33 @@
-<h2>The First Angular Component</h2>
-<div><strong> {{header}} </strong></div>
-<div>{{200 + 300}}</div>
 <br>
-<input type="text" [value]="header" class="form-control">
+<div><strong> "Basic Calculator" </strong></div>
 <br>
-<a [href]="url">Mahesh Sabnis's BLOG</a>
 <br>
-<!--$event an an Angular's standard Event Service object-->
-<input type="button" value="Click Me" (click)="display($event)" class="btn btn-danger">
+<input type="text" [value]="displayValue" class="form-control">
+<br>
+<input type="text" [value]="calculatedValue" class="form-control">
+<br>
+<br>
+<div class="Calculator">
+<input type="button" value="1" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="2" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="3" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="+" (click)="display($event)" class="btn btn-danger">
 <hr>
-<input type="text" [(ngModel)]="name" class="form-control">
+<input type="button" value="4" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="5" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="6" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="-" (click)="display($event)" class="btn btn-danger">
 <hr>
-<input type="text" [(ngModel)]="name" class="form-control">
+<input type="button" value="7" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="8" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="9" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="*" (click)="display($event)" class="btn btn-danger">
 <hr>
-<input type="text" [(ngModel)]="name" class="form-control">
+<input type="button" value="." (click)="display($event)" class="btn btn-danger">
+<input type="button" value="0" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="/" (click)="display($event)" class="btn btn-danger">
+<input type="button" value="=" (click)="calculation()" class="btn btn-danger">
+</div>
+<input type="button" value="AC" (click)="allClear()" class="btn btn-danger">
+<hr>
 <hr>
